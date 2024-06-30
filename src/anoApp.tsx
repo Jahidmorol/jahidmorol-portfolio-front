@@ -33,7 +33,7 @@ function App() {
       <div className="body-bg">
         <div className="slider-thumb"></div>
         <div className="cavas-wrap">
-          <canvas id="liquid" />
+          <canvas id="liquid"> </canvas>
         </div>
         <div className="dynamic-title">
           <span>Resume</span>

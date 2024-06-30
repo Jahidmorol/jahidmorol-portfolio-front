@@ -22,27 +22,27 @@ function Header() {
           <nav className="nav-inner fl-wrap sliding-menu" id="menu">
             <ul>
               <li>
-                <a href="index-2.html" className="ajax">
+                <a href="/">
                   <i className="fal fa-home"></i> Home
                 </a>
               </li>
               <li>
-                <a href="resume.html" className="ajax">
+                <a href="/resume">
                   <i className="fal fa-address-card"></i> Resume
                 </a>
               </li>
               <li>
-                <a href="portfolio.html" className="ajax">
+                <a href="/portfolio">
                   <i className="fal fa-images"></i> Portfolio
                 </a>
               </li>
               <li>
-                <a href="contacts.html" className="ajax">
+                <a href="/contact">
                   <i className="fal fa-envelope"></i> Contacts
                 </a>
               </li>
               <li>
-                <a href="blog.html" className="ajax">
+                <a href="/blog">
                   <i className="fal fa-book"></i> Blog
                 </a>
               </li>
