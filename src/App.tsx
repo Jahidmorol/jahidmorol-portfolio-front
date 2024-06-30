@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
+// import Home from "./components/Home";
+import { Outlet } from "react-router-dom";
 
-function App() {
+function MainLayout() {
   return (
     <main>
       {/* <--Loader --> */}
@@ -16,7 +17,8 @@ function App() {
         <div className="main-container">
           <Header />
           <div className="content-holder">
-            <Home />
+            {/* <Home /> */}
+            <Outlet />
 
             {/* <-- page-load --> */}
             <div className="page-load">
@@ -43,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainLayout;

@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <div>
+    <>
       <header className="main-header">
         <div className="header-titile">
           <h1>Kevin Antony</h1>
@@ -8,18 +8,13 @@ function Header() {
         </div>
         <a
           data-src="images/main.jpg"
-          // style={{ backgroundImage: "url(images/main.jpg" }}
           className="image-popup header-popup color-bg"
         >
           <i className="fal fa-plus"></i>
         </a>
 
         <div className="header-titile-img">
-          <div
-            className="bg"
-            data-bg="images/main.jpg"
-            // style={{ backgroundImage: "url(images/main.jpg)" }}
-          ></div>
+          <div className="bg" data-bg="images/main.jpg"></div>
         </div>
 
         {/* <-- nav --> */}
@@ -87,7 +82,7 @@ function Header() {
         </div>
       </div>
       {/* <!-- top-opt --> */}
-    </div>
+    </>
   );
 }
 

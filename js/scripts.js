@@ -327,33 +327,40 @@ function contentAnimHide() {
     $(".dynamic-title span").removeClass("hidcont2");
   }, 1500);
 }
-var mbt = $(".header-titile h1").text(),
-  mbts = $(".header-titile h4").text();
-$(".mob-logo span").text(mbt);
-$(".mob-logo strong").text(mbts);
-var mmb = $(".nav-button-wrap"),
-  mh = $(".main-header"),
-  nov = $(".nav-overlay");
-function showMenu() {
-  mh.addClass("vismenu");
-  mmb.removeClass("c_sb");
-  nov.fadeIn(300);
-}
-function hideMenu() {
-  mh.removeClass("vismenu");
-  mmb.addClass("c_sb");
-  nov.fadeOut(300);
-}
-mmb.on("click", function () {
-  if ($(this).hasClass("c_sb")) showMenu();
-  else hideMenu();
+$(document).ready(function () {
+  var mbt = $(".header-title h1").text(),
+    mbts = $(".header-title h4").text();
+  $(".mob-logo span").text(mbt);
+  $(".mob-logo strong").text(mbts);
+  var mmb = $(".nav-button-wrap"),
+    mh = $(".main-header"),
+    nov = $(".nav-overlay");
+
+  function showMenu() {
+    mh.addClass("vismenu");
+    mmb.removeClass("c_sb");
+    nov.fadeIn(300);
+  }
+
+  function hideMenu() {
+    mh.removeClass("vismenu");
+    mmb.addClass("c_sb");
+    nov.fadeOut(300);
+  }
+
+  mmb.on("click", function () {
+    if ($(this).hasClass("c_sb")) showMenu();
+    else hideMenu();
+  });
+
+  nov.on("click", function () {
+    hideMenu();
+  });
+
+  $("head").append(
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">'
+  );
 });
-nov.on("click", function () {
-  hideMenu();
-});
-$("head").append(
-  '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">'
-);
 //   Init Ajax------------------
 $(function () {
   $.coretemp({
