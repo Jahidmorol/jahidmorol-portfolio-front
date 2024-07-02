@@ -1,4 +1,95 @@
+import { useGetProjectsQuery } from "../redux/api/apis";
+
+const portfoliosData = {
+  portfolioItems: [
+    {
+      _id: "1",
+      categories: ["javascript"],
+      images: ["images/folio/1.jpg"],
+      title: "Fitness Studio Website",
+      description: "dddddddddddddddddddddd",
+      liveLink: "",
+      githubFrontend: "",
+      githubBackend: "",
+    },
+    {
+      _id: "2",
+      categories: ["javascript", "react"],
+      images: ["images/folio/2.jpg"],
+      title: "Architecture Agensy",
+    },
+    {
+      _id: "3",
+      categories: ["next-js", "javascript"],
+      images: ["images/folio/3.jpg"],
+      title: "Video Project",
+    },
+    {
+      _id: "4",
+      categories: ["next-js"],
+      images: ["images/folio/4.jpg"],
+      title: "Photography Project",
+    },
+    {
+      _id: "5",
+      categories: ["javascript"],
+      images: ["images/folio/5.jpg"],
+      title: "Kent Brant Concept",
+    },
+    {
+      _id: "6",
+      categories: ["react"],
+      images: ["images/folio/6.jpg"],
+      title: "Corporate website",
+    },
+    {
+      _id: "7",
+      categories: ["react", "javascript"],
+      images: ["images/folio/7.jpg"],
+      title: "Travel Agensy",
+    },
+    {
+      _id: "8",
+      categories: ["typescript", "react"],
+      images: ["images/folio/8.jpg"],
+      title: "Sport Agensy",
+    },
+  ],
+};
+
+const filters = [
+  {
+    label: "All",
+    filter: "*",
+    active: true,
+  },
+  {
+    label: "Javascript",
+    filter: ".javascript",
+    active: false,
+  },
+  {
+    label: "React",
+    filter: ".react",
+    active: false,
+  },
+  {
+    label: "Next js",
+    filter: ".next-js",
+    active: false,
+  },
+  {
+    label: "Typescript",
+    filter: ".typescript",
+    active: false,
+  },
+];
+
 const Portfolio = () => {
+  const { data } = useGetProjectsQuery(undefined);
+
+  console.log("projects data---=>", data);
+
   return (
     <>
       <div id="wrapper">
@@ -18,40 +109,59 @@ const Portfolio = () => {
                 <h3>Portfolio</h3>
                 <div className="gallery-filters-wrap">
                   <div className="gallery-filters init_hidden_filter">
-                    <a
-                      href="#"
-                      className="gallery-filter  gallery-filter-active"
-                      data-filter="*"
-                    >
-                      All
-                    </a>
-                    <a href="#" className="gallery-filter" data-filter=".web">
-                      Web Design
-                    </a>
-                    <a
-                      href="#"
-                      className="gallery-filter"
-                      data-filter=".photography"
-                    >
-                      Photo
-                    </a>
-                    <a
-                      href="#"
-                      className="gallery-filter"
-                      data-filter=".branding"
-                    >
-                      Branding
-                    </a>
-                    <a href="#" className="gallery-filter" data-filter=".uides">
-                      Ui Design
-                    </a>
+                    {filters.map((filter, index) => (
+                      <a
+                        href="#"
+                        className={`gallery-filter ${
+                          filter.active ? "gallery-filter-active" : ""
+                        }`}
+                        data-filter={filter.filter}
+                        key={index}
+                      >
+                        {filter.label}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
               {/* <!-- portfolio start --> */}
-              <div className="gallery-items min-pad hover-dir   fl-wrap  ">
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  web branding">
+              <div className="gallery-items min-pad hover-dir fl-wrap">
+                {portfoliosData.portfolioItems.map((item, index) => (
+                  <div
+                    className={`gallery-item ${item?.categories.join(" ")}`}
+                    key={index}
+                  >
+                    <div className="grid-item-holder hov_zoom">
+                      <img src={item?.images[0]} alt="image" />
+                      <div className="grid-det">
+                        <a
+                          href={item?.images[0]}
+                          className="grid-media-zoom image-popup"
+                        >
+                          <i className={`far fa-eye`}></i>
+                        </a>
+                        <div className="grid-det_category">
+                          {item?.categories.map((category, i) => (
+                            <a href="#" key={i}>
+                              {category}
+                            </a>
+                          ))}
+                        </div>
+                        <div className="grid-det-item">
+                          <a
+                            href={`/portfolio/${item?._id}`}
+                            className="ajax grid-det_link"
+                          >
+                            {item?.title}
+                            <i className="fal fa-long-arrow-right"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* <div className="gallery-item  web branding">
                   <div className="grid-item-holder hov_zoom">
                     <img src="images/folio/1.jpg" alt="image" />
                     <div className="grid-det">
@@ -75,214 +185,23 @@ const Portfolio = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* <!-- gallery-item end--> */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  photography uides">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/2.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/2.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> UI/UX</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Architecture Agensy
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end--> */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  web">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/3.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="https://vimeo.com/6698875"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-play"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Photography</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Video Project
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end--> */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item branding   photography">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/4.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/4.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Branding</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Photography Project
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end-->                            */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  uides web">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/5.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/5.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Branding</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Kent Brant Concept
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end-->                             */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item    branding">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/6.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/6.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Branding</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Corporate website
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end-->                             */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  uides">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/7.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/7.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Branding</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Travel Agensy
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end-->                             */}
-                {/* <!-- gallery-item--> */}
-                <div className="gallery-item  web  photography">
-                  <div className="grid-item-holder hov_zoom">
-                    <img src="images/folio/8.jpg" alt="image" />
-                    <div className="grid-det">
-                      <a
-                        href="images/folio/8.jpg"
-                        className="grid-media-zoom   image-popup"
-                      >
-                        <i className="far fa-search"></i>
-                      </a>
-                      <div className="grid-det_category">
-                        <a href="#">Design </a> <a href="#"> Branding</a>
-                      </div>
-                      <div className="grid-det-item">
-                        <a
-                          href="portfolio-single.html"
-                          className="ajax grid-det_link"
-                        >
-                          Sport Agensy
-                          <i className="fal fa-long-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- gallery-item end-->                               */}
+                </div> */}
               </div>
-              {/* <!-- portfolio end --> 									 */}
             </section>
-            {/* <!--section end-->                							 */}
+
+            {/* scroll bar */}
             <div className="to-top-wrap">
               <div className="to-top color-bg">
-                <i className="fas fa-caret-up"></i>
+                <i className="fas fa-caret-up" />
               </div>
             </div>
           </div>
         </div>
         {/* <!--scroll-bar end --> */}
-        {/* <!--share end --> */}
+
         <div className="share-wrapper">
           <div className="share-container isShare"></div>
         </div>
-        {/* <!--share end -->							 */}
       </div>
     </>
   );

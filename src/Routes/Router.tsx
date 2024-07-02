@@ -5,6 +5,7 @@ import Resume from "../components/Resume";
 import Contacts from "../components/Contacts";
 import Blog from "../components/Blog";
 import Portfolio from "../components/Portfolio";
+import PortfolioSingle from "../components/PortfolioSingle";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/portfolio",
         element: <Portfolio />,
+      },
+      {
+        path: "/portfolio/:id",
+        element: <PortfolioSingle />,
       },
 
       //   {
