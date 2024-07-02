@@ -1,4 +1,10 @@
+import { useGetProfileQuery } from "../redux/api/apis";
+
 function Home() {
+  const { data } = useGetProfileQuery(undefined);
+
+  console.log("data----=>", data);
+
   return (
     <div id="wrapper">
       <div className="scr-bar_container">
@@ -21,13 +27,13 @@ function Home() {
               <div className="row">
                 <div className="col-md-7">
                   <div className="rotate_text hero-decor-let">
-                    <div>Web Design</div>
+                    <div>Full-Stack Developer</div>
                     <div>
-                      <span>Ui/Ux Design</span>
+                      <span>Mern-Stack Developer</span>
                     </div>
-                    <div>Branding</div>
+                    <div>Frontend Developer</div>
                     <div>
-                      <span>Ecommerce</span>
+                      <span>Backend Developer</span>
                     </div>
                   </div>
                   <h2>Welcome to My portfolio</h2>
@@ -48,21 +54,14 @@ function Home() {
           <section>
             <div className="row">
               <div className="col-md-7">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <p>{data?.data?.introduction}</p>
                 <div className="facts-container fl-wrap">
                   <div className="inline-facts-wrap">
                     <div className="inline-facts">
                       <div className="milestone-counter">
                         <div className="stats animaper">
-                          <div className="num" data-content="0" data-num="145">
-                            145
+                          <div className="num" data-content="0" data-num="10">
+                            {data?.data?.finishedProjects}
                           </div>
                         </div>
                       </div>
@@ -74,7 +73,7 @@ function Home() {
                       <div className="milestone-counter">
                         <div className="stats animaper">
                           <div className="num" data-content="0" data-num="825">
-                            825
+                            {data?.data?.workingHours}
                           </div>
                         </div>
                       </div>
@@ -85,8 +84,8 @@ function Home() {
                     <div className="inline-facts">
                       <div className="milestone-counter">
                         <div className="stats animaper">
-                          <div className="num" data-content="0" data-num="15">
-                            15
+                          <div className="num" data-content="0" data-num="02">
+                            {data?.data?.awardsWon}
                           </div>
                         </div>
                       </div>
@@ -100,23 +99,23 @@ function Home() {
                   <ul>
                     <li>
                       <strong>Age</strong>
-                      <span>24</span>
+                      <span>{data?.data?.age}</span>
                     </li>
                     <li>
                       <strong>Freelance</strong>
-                      <span>Available</span>
+                      <span>{data?.data?.freelance}</span>
                     </li>
                     <li>
                       <strong>Residence</strong>
-                      <span>Ukraine</span>
+                      <span>{data?.data?.residence}</span>
                     </li>
                     <li>
                       <strong>Address</strong>
-                      <span>Kharkiv</span>
+                      <span>{data?.data?.address}</span>
                     </li>
                     <li>
                       <strong>Hobby</strong>
-                      <span>Footbal, Traveling</span>
+                      <span>{data?.data?.hobby}</span>
                     </li>
                   </ul>
                   <a href="/portfolio" className="btn ajax fl-btn color-bg">

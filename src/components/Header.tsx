@@ -1,20 +1,35 @@
+import { useGetProfileQuery } from "../redux/api/apis";
+
 function Header() {
+  const { data } = useGetProfileQuery(undefined);
+
+  console.log("data----=>", data);
+
   return (
     <>
       <header className="main-header">
         <div className="header-titile">
-          <h1>Kevin Antony</h1>
-          <h4>Web designer</h4>
+          <h1>{data?.data?.name}</h1>
+          <h4>{data?.data?.designation}</h4>
         </div>
         <a
-          data-src="images/main.jpg"
+          // data-src="images/main.jpg"
+          data-src={data?.data?.profilePicture}
           className="image-popup header-popup color-bg"
         >
           <i className="fal fa-plus"></i>
         </a>
 
         <div className="header-titile-img">
-          <div className="bg" data-bg="images/main.jpg"></div>
+          <div
+            className="bg"
+            //  data-bg="images/main.jpg"
+            style={{
+              backgroundImage: `url(${
+                data?.data?.profilePicture || "images/main.jpg"
+              })`,
+            }}
+          ></div>
         </div>
 
         {/* <-- nav --> */}
@@ -49,8 +64,12 @@ function Header() {
             </ul>
           </nav>
         </div>
-        <a href="#" download="" className="header_btn gradient-bg">
-          <i className="fas fa-download"></i> Download CV
+        <a
+          href={data?.data?.resumeLink}
+          // download="My_CV.pdf"
+          className="header_btn gradient-bg"
+        >
+          <i className="fas fa-eye"></i> View CV
         </a>
       </header>
 

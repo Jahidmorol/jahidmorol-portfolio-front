@@ -1,255 +1,269 @@
+const resumeData = {
+  pageTitle: "My story",
+  pageSubtitle: "Resume",
+  professionalSummary: {
+    title: "Professional Summary",
+    content:
+      "Skilled Full-Stack Developer with expertise in JavaScript, React, and Node.js. Recently contributed to key projects at WebSyner, enhancing web applications and optimizing performance. Adept at delivering high-quality, scalable solutions under tight deadlines.",
+  },
+  languageKnowledge: ["English", "Bangla", "Hindi"],
+  education: [
+    {
+      institution: "Economics",
+      degree: "Bachelor of Arts",
+      description:
+        "Currently pursuing a Bachelor of Arts in Economics at Government Bangla College. Focus on economic theory and practical applications.",
+      date: "2021 - Current",
+    },
+    {
+      institution: "Programming Course",
+      degree: "Full-Stack Developer",
+      description:
+        "Completed levels 1 and 2 of the Full-Stack Developer course at Programming Hero, focusing on mastering front-end and back-end development.",
+      date: "2021 - 2022",
+    },
+  ],
+  workHistory: [
+    {
+      position: "Full-Stack Developer",
+      location: "Bangladesh",
+      description:
+        "Worked as a Full-Stack Developer at WebSyner, focusing on front-end and back-end development. Ensuring high-quality code and efficient performance.",
+      date: "2023 - 2024",
+    },
+  ],
+  frontendSkills: [
+    {
+      skill: "Html",
+      percentage: 95,
+    },
+    {
+      skill: "Css",
+      percentage: 65,
+    },
+    {
+      skill: "Material-UI",
+      percentage: 65,
+    },
+    {
+      skill: "Ant-Design",
+      percentage: 65,
+    },
+    {
+      skill: "TypeScript",
+      percentage: 75,
+    },
+    {
+      skill: "Javascript",
+      percentage: 75,
+    },
+    {
+      skill: "React",
+      percentage: 65,
+    },
+    {
+      skill: "Next Js",
+      percentage: 75,
+    },
+  ],
+  backendSkills: [
+    {
+      skill: "Node Js",
+      percentage: 95,
+    },
+    {
+      skill: "Express",
+      percentage: 65,
+    },
+    {
+      skill: "Mongoose",
+      percentage: 75,
+    },
+    {
+      skill: "PostgreSQL",
+      percentage: 65,
+    },
+    {
+      skill: "Prisma",
+      percentage: 75,
+    },
+  ],
+  tools: [
+    {
+      skill: "GitHub",
+      percentage: 85,
+    },
+    {
+      skill: "Postman",
+      percentage: 95,
+    },
+    {
+      skill: "Figma",
+      percentage: 80,
+    },
+    {
+      skill: "Vs Code",
+      percentage: 70,
+    },
+  ],
+};
+
 const Resume = () => {
   return (
     <>
       <div id="wrapper">
-        {/* <!--scroll-bar --> */}
         <div className="scr-bar_dec"></div>
         <div className="scr-bar_container">
           <div
             className="content"
-            data-pagetitle="My story"
-            data-pagesubtitle="Resume"
+            data-pagetitle={resumeData.pageTitle}
+            data-pagesubtitle={resumeData.pageSubtitle}
           >
             <div className="bg-top"></div>
             <div className="bg-bottom"></div>
-            {/* <!--section  -->  */}
+
             <section>
               <div className="section-title fl-wrap">
-                <h3>Professhional Summary</h3>
+                <h3>{resumeData.professionalSummary.title}</h3>
               </div>
               <div className="box-text-wrap fl-wrap">
                 <div className="row">
                   <div className="col-md-8">
                     <div className="fl-wrap content-box single_pb cb_dec">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Dolore magna aliqua.
-                      </p>
+                      <p>{resumeData.professionalSummary.content}</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="box-text-wrap_item content-box">
                       <h5>Language Knowledge</h5>
                       <ul>
-                        <li>
-                          <span>Dutch</span>
-                        </li>
-                        <li>
-                          <span>French</span>
-                        </li>
-                        <li>
-                          <span>Portuguese</span>
-                        </li>
+                        {resumeData.languageKnowledge.map((language, index) => (
+                          <li key={index}>
+                            <span>{language}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
-            {/* <!--section end-->                							 */}
-            {/* <!--section  -->  */}
+
             <section>
               <div className="row">
                 <div className="col-md-6">
                   <div className="section-title fl-wrap">
-                    <h3>Work History</h3>
+                    <h3>Education</h3>
                   </div>
                   <div className="resume-item-container fl-wrap">
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>SoftService Company</h4>
-                      <h5>Web Developer</h5>
-                      <p>
-                        {" "}
-                        Dolore magna aliqua. Consectetur adipisicing elit.
-                        Iusto, optio, dolorum provident rerum aut hic quasi
-                        placeat iure tempora laudantium ipsa ad debitis unde.
-                      </p>
-                      <span className="resume-date">
-                        2022 and to the present
-                      </span>
-                    </div>
-                    {/* <!--resume-item end-->  */}
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>KharkivIT Soft</h4>
-                      <h5>Front-end Developer</h5>
-                      <p>
-                        {" "}
-                        Iusto, optio, dolorum provident rerum aut hic quasi
-                        placeat iure tempora laudantium ipsa ad debitis unde.
-                      </p>
-                      <span className="resume-date">2016 - 2021</span>
-                    </div>
-                    {/* <!--resume-item end-->  */}
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>Envato Market</h4>
-                      <h5>Senior Developer</h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor ncididunt ut labore et
-                        dolore magna aliqua. Ut veniam.
-                      </p>
-                      <span className="resume-date">2015 - 2016</span>
-                    </div>
-                    {/* <!--resume-item end--> 												 */}
+                    {resumeData.education.map((edu, index) => (
+                      <div className="resume-item fl-wrap" key={index}>
+                        <h4>{edu.institution}</h4>
+                        <h5>{edu.degree}</h5>
+                        <p>{edu.description}</p>
+                        <span className="resume-date">{edu.date}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="section-title fl-wrap">
-                    <h3>Education</h3>
+                    <h3>Work History</h3>
                   </div>
                   <div className="resume-item-container ric_nom fl-wrap">
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>Programming Course</h4>
-                      <h5>New York</h5>
-                      <p>
-                        {" "}
-                        Iusto, optio, dolorum provident rerum aut hic quasi
-                        placeat iure tempora laudantium ipsa ad debitis unde.
-                      </p>
-                      <span className="resume-date">2021 - 2022</span>
-                    </div>
-                    {/* <!--resume-item end-->  */}
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>University of Design</h4>
-                      <h5>London</h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor ncididunt ut labore et
-                        dolore magna aliqua. Ut veniam.
-                      </p>
-                      <span className="resume-date">2012 - 2016</span>
-                    </div>
-                    {/* <!--resume-item end--> 											 */}
-                    {/* <!--resume-item-->  */}
-                    <div className="resume-item fl-wrap">
-                      <h4>Academy of Art University</h4>
-                      <h5>Paris</h5>
-                      <p>
-                        {" "}
-                        Dolore magna aliqua. Consectetur adipisicing elit.
-                        Iusto, optio, dolorum provident rerum aut hic quasi
-                        placeat iure tempora laudantium ipsa ad debitis unde.
-                      </p>
-                      <span className="resume-date">2008 - 2012</span>
-                    </div>
-                    {/* <!--resume-item end-->  */}
+                    {resumeData.workHistory.map((work, index) => (
+                      <div className="resume-item fl-wrap" key={index}>
+                        <h4>{work.position}</h4>
+                        <h5>{work.location}</h5>
+                        <p>{work.description}</p>
+                        <span className="resume-date">{work.date}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </section>
-            {/* <!--section end-->  							 */}
-            {/* <!--section  -->  */}
+
             <section>
               <div className="fl-wrap">
                 <div className="row">
                   <div className="col-md-6">
                     <div className="section-title fl-wrap">
-                      <h3>Design Skills</h3>
+                      <h3>Frontend Skills</h3>
                     </div>
                     <div className="skillbar-box animaper">
-                      {/* <!-- skill  --> */}
-                      <div className="custom-skillbar-title">
-                        <span>Photoshop</span>
-                      </div>
-                      <div className="skill-bar-percent">95%</div>
-                      <div className="skillbar-bg" data-percent="95%">
-                        <div className="custom-skillbar"></div>
-                      </div>
-                      {/* <!-- skill  --> */}
-                      <div className="custom-skillbar-title">
-                        <span>Figma</span>
-                      </div>
-                      <div className="skill-bar-percent">65%</div>
-                      <div className="skillbar-bg" data-percent="65%">
-                        <div className="custom-skillbar"></div>
-                      </div>
-                      {/* <!-- skill  --> */}
-                      <div className="custom-skillbar-title">
-                        <span>Sketch</span>
-                      </div>
-                      <div className="skill-bar-percent">75%</div>
-                      <div className="skillbar-bg" data-percent="75%">
-                        <div className="custom-skillbar"></div>
-                      </div>
-                      {/* <!-- skill  --> */}
-                      <div className="custom-skillbar-title">
-                        <span>LightRoom</span>
-                      </div>
-                      <div className="skill-bar-percent">65%</div>
-                      <div className="skillbar-bg" data-percent="65%">
-                        <div className="custom-skillbar"></div>
-                      </div>
-                      {/* <!-- skill  --> */}
-                      <div className="custom-skillbar-title">
-                        <span>Adobe XD</span>
-                      </div>
-                      <div className="skill-bar-percent">75%</div>
-                      <div className="skillbar-bg" data-percent="75%">
-                        <div className="custom-skillbar"></div>
-                      </div>
+                      {resumeData.frontendSkills.map((skill, index) => (
+                        <div key={index}>
+                          <div className="custom-skillbar-title">
+                            <span>{skill.skill}</span>
+                          </div>
+                          <div className="skill-bar-percent">
+                            {skill.percentage}%
+                          </div>
+                          <div
+                            className="skillbar-bg"
+                            data-percent={`${skill.percentage}%`}
+                          >
+                            <div
+                              className="custom-skillbar"
+                              style={{ width: `${skill.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="section-title fl-wrap">
-                      <h3>Developer Skills</h3>
+                      <h3>Backend Skills</h3>
+                    </div>
+                    <div className="skillbar-box animaper">
+                      {resumeData.backendSkills.map((skill, index) => (
+                        <div key={index}>
+                          <div className="custom-skillbar-title">
+                            <span>{skill.skill}</span>
+                          </div>
+                          <div className="skill-bar-percent">
+                            {skill.percentage}%
+                          </div>
+                          <div
+                            className="skillbar-bg"
+                            data-percent={`${skill.percentage}%`}
+                          >
+                            <div
+                              className="custom-skillbar"
+                              style={{ width: `${skill.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="fl-wrap" style={{ paddingTop: "30px" }}>
+                      {/* <h3>Tools</h3> */}
                     </div>
                     <div className="clearfix"></div>
                     <div
                       className="piechart-holder fl-wrap animaper"
                       data-skcolor="#F89020"
                     >
-                      {/* <!-- 1  --> */}
-                      <div className="piechart">
-                        <span className="chart" data-percent="85">
-                          <span className="percent"></span>
-                        </span>
-                        <div className="clearfix"></div>
-                        <div className="skills-description">
-                          <h4>Jqeury</h4>
+                      {resumeData.tools.map((skill, index) => (
+                        <div className="piechart" key={index}>
+                          <span
+                            className="chart"
+                            data-percent={skill.percentage}
+                          >
+                            <span className="percent"></span>
+                          </span>
+                          <div className="clearfix"></div>
+                          <div className="skills-description">
+                            <h4>{skill.skill}</h4>
+                          </div>
                         </div>
-                      </div>
-                      {/* <!-- 1 end --> */}
-                      {/* <!-- 2  --> */}
-                      <div className="piechart">
-                        <span className="chart" data-percent="95">
-                          <span className="percent"></span>
-                        </span>
-                        <div className="clearfix"></div>
-                        <div className="skills-description">
-                          <h4>Phyton</h4>
-                        </div>
-                      </div>
-                      {/* <!-- 2 end  --> */}
-                      {/* <!-- 3  --> */}
-                      <div className="piechart">
-                        <span className="chart" data-percent="80">
-                          <span className="percent"></span>
-                        </span>
-                        <div className="clearfix"></div>
-                        <div className="skills-description">
-                          <h4>React JS</h4>
-                        </div>
-                      </div>
-                      {/* <!-- 3  end--> */}
-                      {/* <!-- 3  --> */}
-                      <div className="piechart">
-                        <span className="chart" data-percent="70">
-                          <span className="percent"></span>
-                        </span>
-                        <div className="clearfix"></div>
-                        <div className="skills-description">
-                          <h4>PHP / MYSQL</h4>
-                        </div>
-                      </div>
-                      {/* <!-- 3  end-->											 */}
+                      ))}
                       <div className="chart-dec">
                         <span>
                           <i className="fal fa-plus"></i>
@@ -260,7 +274,7 @@ const Resume = () => {
                 </div>
               </div>
             </section>
-            {/* <!--section end--> 								 */}
+
             <div className="to-top-wrap">
               <div className="to-top color-bg">
                 <i className="fas fa-caret-up"></i>
@@ -268,16 +282,12 @@ const Resume = () => {
             </div>
           </div>
         </div>
-        {/* <!--scroll-bar end --> */}
-        {/* <!--share end --> */}
+
         <div className="share-wrapper">
           <div className="share-container isShare"></div>
         </div>
-        {/* <!--share end -->*/}
       </div>
-      {/* <!--wrapper end --> */}
 
-      {/* <!--page-load -->	 */}
       <div className="page-load">
         <div className="pl-spinner">
           <span></span>

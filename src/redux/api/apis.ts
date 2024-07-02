@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "./baseApi";
 
-const categoryApis = baseApi.injectEndpoints({
+const allApis = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getProfile: build.query({
       query: () => ({
@@ -44,4 +45,4 @@ export const {
   useGetBlogQuery,
   useGetProjectsQuery,
   useGetProjectQuery,
-} = categoryApis;
+} = allApis as any;
