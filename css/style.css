@@ -2999,3 +2999,12 @@ canvas {
     background-position: center;
   }
 }
+
+.clamp-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  max-height: 5.7em;
+  -webkit-line-clamp: 3;
+}
